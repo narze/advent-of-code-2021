@@ -6,21 +6,21 @@
     {
       "label": "Solve example",
       "type": "shell",
-      "command": "ruby ${file} ${fileDirname}/example.txt",
+      "command": "clear; echo ${file} ${fileDirname}/example.txt; ruby ${file} ${fileDirname}/example.txt",
       "problemMatcher": [],
       "group": "build"
     },
     {
       "label": "Solve example (watch)",
       "type": "shell",
-      "command": "onchange -k ${file} ${fileDirname}/example.txt -- sh -c 'clear; ruby ${file} ${fileDirname}/example.txt'",
+      "command": "onchange -k ${file} ${fileDirname}/example.txt -- sh -c 'clear; echo ${file} ${fileDirname}/example.txt; ruby ${file} ${fileDirname}/example.txt'",
       "problemMatcher": [],
       "group": "build"
     },
     {
       "label": "Solve input",
       "type": "shell",
-      "command": "ruby ${file} ${fileDirname}/input.txt",
+      "command": "clear; echo ${file} ${fileDirname}/example.txt; ruby ${file} ${fileDirname}/input.txt",
       "problemMatcher": [],
       "group": "build"
     },
