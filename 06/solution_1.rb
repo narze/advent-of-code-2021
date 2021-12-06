@@ -1,12 +1,12 @@
-def run
+def run(days_count)
   input = File.read(ARGV[0]).chomp
   days = input.split(",").map(&:to_i)
 
-  80.times do
+  days_count.times do
     days = iterate(days)
   end
 
-  puts days.size
+  puts "Days: #{days_count}, Size: #{days.size}"
 end
 
 def iterate(days)
@@ -24,4 +24,4 @@ def iterate(days)
   days
 end
 
-run
+run(80)
