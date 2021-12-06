@@ -23,6 +23,21 @@
       "command": "ruby ${file} ${fileDirname}/input.txt",
       "problemMatcher": [],
       "group": "build"
+    },
+    {
+      "label": "Create files",
+      "type": "shell",
+      "command": "mkdir ${input:day}; touch ${input:day}/input.txt ${input:day}/example.txt ${input:day}/solution_1.rb ${input:day}/solution_2.rb",
+      "problemMatcher": [],
+      "group": "build"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "day",
+      "type": "promptString",
+      "description": "Day e.g. 01",
+      "default": "01"
     }
   ]
 }
