@@ -5,23 +5,23 @@ def run
   values = lines.map do |line|
     segments, digits = line.split("|").map { |str| str.strip.split(" ") }
 
-    seg_1 = segments.detect { |s| s.size == 2 }.split("").sort.join
-    seg_7 = segments.detect { |s| s.size == 3 }.split("").sort.join
-    seg_4 = segments.detect { |s| s.size == 4 }.split("").sort.join
-    seg_8 = segments.detect { |s| s.size == 7 }.split("").sort.join
+    seg_1 = sort_chars(segments.detect { |s| s.size == 2 })
+    seg_7 = sort_chars(segments.detect { |s| s.size == 3 })
+    seg_4 = sort_chars(segments.detect { |s| s.size == 4 })
+    seg_8 = sort_chars(segments.detect { |s| s.size == 7 })
 
     seg_f = segments.join.chars.tally.detect { |_,v| v == 9 }.first
     seg_e = segments.join.chars.tally.detect { |_,v| v == 4 }.first
 
-    seg_2 = segments.reject { |c| c.include?(seg_f) }.first.split("").sort.join
-    seg_c = (seg_1.split("") - [seg_f]).first
+    seg_2 = sort_chars(segments.reject { |c| c.include?(seg_f) }.first)
+    seg_c = (seg_1.chars - [seg_f]).first
     seg_b = seg_8.tr(seg_2, "").tr(seg_f, "")
     seg_d = seg_4.tr(seg_1, "").tr(seg_b, "")
     seg_0 = seg_8.tr(seg_d, "")
 
     seg_9 = seg_8.tr(seg_e, "")
     seg_3 = seg_9.tr(seg_b, "")
-    seg_6 = seg_8.tr(seg_c, "").split("").sort.join
+    seg_6 = seg_8.tr(seg_c, "")
     seg_5 = seg_6.tr(seg_e, "")
 
     mapping = {}
@@ -36,10 +36,14 @@ def run
     mapping[seg_8] = "8"
     mapping[seg_9] = "9"
 
-    digits.map { |seg| mapping[seg.split("").sort.join] }.join.to_i
+    digits.map { |seg| mapping[sort_chars(seg)] }.join.to_i
   end
 
   puts "Sum of digits: #{values.sum}"
+end
+
+def sort_chars(str)
+  str.chars.sort.join
 end
 
 run

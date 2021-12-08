@@ -1,6 +1,7 @@
 def run
   input = File.read(ARGV[0]).chomp
   lines = input.split("\n")
+
   appearances = lines.map do |line|
     segments, digits = line.split("|").map { |str| str.strip.split(" ") }
 
