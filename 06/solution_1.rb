@@ -1,6 +1,6 @@
 def run(days_count)
   input = File.read(ARGV[0]).chomp
-  days = input.split(",").map(&:to_i)
+  days = input.split(',').map(&:to_i)
 
   days_count.times do
     days = iterate(days)

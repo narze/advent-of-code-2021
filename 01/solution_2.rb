@@ -4,9 +4,7 @@ prev_input = 0
 File.read(ARGV[0]).split("\n").map(&:to_i).each_cons(3) do |arr|
   input = arr.sum
 
-  if input > prev_input
-    count += 1
-  end
+  count += 1 if input > prev_input
 
   prev_input = input
 end

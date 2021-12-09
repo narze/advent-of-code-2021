@@ -1,9 +1,9 @@
 def run(days_count)
   input = File.read(ARGV[0]).chomp
-  days = input.split(",").map(&:to_i).tally
+  days = input.split(',').map(&:to_i).tally
 
   days_count.times do
-  p  days = iterate(days)
+    p days = iterate(days)
   end
 
   puts "Days: #{days_count}, Size: #{days.values.sum}"

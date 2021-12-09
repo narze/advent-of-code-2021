@@ -1,13 +1,11 @@
 def run
   lines = File.read(ARGV[0]).split("\n")
 
-  numbers = lines.shift.split(",").map(&:to_i)
+  numbers = lines.shift.split(',').map(&:to_i)
 
   boards = []
 
-  while lines.shift
-    boards.push(5.times.map { lines.shift.split.map(&:to_i) })
-  end
+  boards.push(5.times.map { lines.shift.split.map(&:to_i) }) while lines.shift
 
   numbers.each do |num|
     boards = boards.map.with_index do |board, idx|
@@ -37,7 +35,7 @@ def mark(board, num)
   board.map do |row|
     row.map do |item|
       if item == num
-        "X"
+        'X'
       else
         item
       end
@@ -48,16 +46,12 @@ end
 # Find if "X" lines up
 def win?(board)
   # Check rows
-  if board.any? { |row| row.all? { |item| item == "X" } }
-    return true
-  end
+  return true if board.any? { |row| row.all? { |item| item == 'X' } }
 
   # Check columns
-  if board.transpose.any? { |col| col.all? { |item| item == "X" } }
-    return true
-  end
+  return true if board.transpose.any? { |col| col.all? { |item| item == 'X' } }
 
-  return false
+  false
 end
 
 def calculate_score(board, num)
@@ -65,9 +59,7 @@ def calculate_score(board, num)
 
   board.each do |row|
     row.each do |item|
-      if item.is_a?(Integer)
-        unmarked.push item
-      end
+      unmarked.push item if item.is_a?(Integer)
     end
   end
 

@@ -7,20 +7,13 @@ def run
     x2, y2 = x2y2.split(',').map(&:to_i)
 
     # Consider only straight lines
-    if x1 == x2 || y1 == y2
-      [x1, y1, x2, y2]
-    end
+    [x1, y1, x2, y2] if x1 == x2 || y1 == y2
   end.compact
 
   map = {}
   straight_lines.each do |(x1, y1, x2, y2)|
-    if x1 > x2
-      x1, x2 = x2, x1
-    end
-
-    if y1 > y2
-      y1, y2 = y2, y1
-    end
+    x1, x2 = x2, x1 if x1 > x2
+    y1, y2 = y2, y1 if y1 > y2
 
     (x1..x2).each do |x|
       (y1..y2).each do |y|
@@ -32,7 +25,7 @@ def run
 
   # p map
 
-  ans = map.select { |k, v| v > 1 }.size
+  ans = map.select { |_k, v| v > 1 }.size
 
   puts "Answer: #{ans}"
 end

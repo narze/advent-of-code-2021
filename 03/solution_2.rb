@@ -1,10 +1,10 @@
-input = File.read(ARGV[0]).split("\n").map { |l| l.split("") }
+input = File.read(ARGV[0]).split("\n").map { |l| l.split('') }
 
 def calculate_oxygen(input)
   idx = 0
   len = input.first.size
   while idx < len
-    max = input.transpose[idx].tally.sort_by { |k, v| -k.to_i }.max_by { |k,v| v }.first
+    max = input.transpose[idx].tally.sort_by { |k, _v| -k.to_i }.max_by { |_k, v| v }.first
 
     input = input.select do |line|
       bit = line[idx]
@@ -19,7 +19,7 @@ def calculate_oxygen(input)
     idx += 1
   end
 
-  return oxygen
+  oxygen
 end
 
 def calculate_co2(input)
@@ -27,7 +27,7 @@ def calculate_co2(input)
   len = input.first.size
 
   while idx < len
-    min = input.transpose[idx].tally.sort_by { |k, v| k.to_i }.min_by { |k,v| v }.first
+    min = input.transpose[idx].tally.sort_by { |k, _v| k.to_i }.min_by { |_k, v| v }.first
 
     input = input.select do |line|
       bit = line[idx]
@@ -42,7 +42,7 @@ def calculate_co2(input)
     idx += 1
   end
 
-  return co2
+  co2
 end
 
 puts "Oxygen: #{calculate_oxygen(input)}"

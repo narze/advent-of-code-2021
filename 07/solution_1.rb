@@ -1,8 +1,8 @@
 def run
   input = File.read(ARGV[0]).chomp
-  positions = input.split(",").map(&:to_i)
+  positions = input.split(',').map(&:to_i)
 
-  med = positions.tally.max_by { |_,v| v }.first
+  med = positions.tally.max_by { |_, v| v }.first
   avg = positions.sum / positions.size
 
   range = med < avg ? med.upto(avg) : med.downto(avg)
