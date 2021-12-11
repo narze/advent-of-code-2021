@@ -1,12 +1,12 @@
 def run
   point_map = {
-    "(" => 1,
-    "[" => 2,
-    "{" => 3,
-    "<" => 4,
+    '(' => 1,
+    '[' => 2,
+    '{' => 3,
+    '<' => 4
   }
 
-  input = File.read(ARGV[0]).split("\n").map { |l| l.split("") }
+  input = File.read(ARGV[0]).split("\n").map { |l| l.split('') }
 
   points = []
 
@@ -16,25 +16,25 @@ def run
 
     line.each do |char|
       case char
-      when "[", "{", "(", "<"
+      when '[', '{', '(', '<'
         stack.push(char)
-      when "]"
-        if stack.pop != "["
+      when ']'
+        if stack.pop != '['
           corrupted = true
           next
         end
-      when "}"
-        if stack.pop != "{"
+      when '}'
+        if stack.pop != '{'
           corrupted = true
           next
         end
-      when ")"
-        if stack.pop != "("
+      when ')'
+        if stack.pop != '('
           corrupted = true
           next
         end
-      when ">"
-        if stack.pop != "<"
+      when '>'
+        if stack.pop != '<'
           corrupted = true
           next
         end
@@ -43,15 +43,15 @@ def run
       end
     end
 
-    if !corrupted
-      point = 0
+    next if corrupted
 
-      stack.reverse.each do |char|
-        point = 5 * point + point_map[char]
-      end
+    point = 0
 
-      points.push point
+    stack.reverse.each do |char|
+      point = 5 * point + point_map[char]
     end
+
+    points.push point
   end
 
   puts "Points: #{points}"
