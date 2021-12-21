@@ -5,13 +5,7 @@ def run
 
   p1_points = p2_points = 0
 
-  track = (1..10).to_a
-  dice = @default_dice
   dice_idx = 0
-
-  # move = dice[dice_idx] + dice[dice_idx + 1] + dice[dice_idx + 2]
-  # p1_points = (p1 + move - 1) % 10 + 1
-  # dice_idx += 3
 
   rolls = 0
 
